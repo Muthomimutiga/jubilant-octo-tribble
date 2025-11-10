@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiguatha & Co. Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/react-quill@2.0.0/dist/quill.snow.css" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'custom-indigo': {
+                100: '#e0e7ff', // Lightest
+                500: '#6366f1', // Mid
+                600: '#4f46e5', // Default
+                700: '#4338ca', // Dark
+              },
+              'custom-amber': {
+                100: '#fffbeb', // Lightest
+                500: '#f59e0b', // Mid
+                700: '#b45309', // Dark
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* --- Global Override Fix for Top-Level Components --- */
+
+      /* 1. Fix for all input fields inside any modal */
+      .modal-content input,
+      .modal-content textarea,
+      .modal-content select {
+          color: #1e293b !important; /* slate-800, Force dark text for readability */
+          background-color: #ffffff !important; /* Force white background */
+      }
+
+      /* 2. Fix for AI chatbot message bubble */
+      .chatbot-window .message-bubble.model {
+          color: #1e293b !important; /* slate-800, Force dark text for readability */
+          background-color: #ffffff !important; /* Force white background */
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "axios": "https://esm.sh/axios@^1.7.2",
+    "lucide-react": "https://esm.sh/lucide-react@^0.417.0",
+    "react-quill": "https://esm.sh/react-quill@^2.0.0",
+    "chart.js": "https://esm.sh/chart.js@^4.4.3",
+    "react-chartjs-2": "https://esm.sh/react-chartjs-2@^5.2.0",
+    "firebase/app": "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js",
+    "firebase/auth": "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js",
+    "@/": "./",
+    "@google/genai": "https://esm.sh/@google/genai@^1.10.0",
+    "firebase/": "https://esm.sh/firebase@^12.0.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!-- This is where React will inject the app -->
+    <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
