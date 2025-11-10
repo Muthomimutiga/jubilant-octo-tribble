@@ -1,0 +1,104 @@
+.contributor-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* 12px */
+    padding: 0.75rem;
+    border-radius: 0.5rem; /* rounded-lg */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.contributor-item:hover {
+    background-color: #f8fafc; /* slate-50 */
+}
+
+.contributor-rank {
+    width: 1.5rem; /* w-6 */
+    height: 1.5rem; /* h-6 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contributor-rank-number {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #64748b; /* slate-500 */
+}
+
+.contributor-avatar {
+    width: 2.5rem; /* w-10 */
+    height: 2.5rem; /* h-10 */
+    border-radius: 9999px; /* rounded-full */
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: #eef2ff; /* indigo-50 */
+    color: #4338ca; /* indigo-700 */
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contributor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contributor-details {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.contributor-name {
+    font-weight: 600;
+    color: #1e293b; /* slate-800 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contributor-count {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #4f46e5; /* custom-indigo-600 */
+    background-color: #eef2ff; /* indigo-50 */
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    min-width: 2rem;
+    text-align: center;
+}
+
+.widget-description {
+    font-size: 0.875rem; /* text-sm */
+    color: #64748b; /* slate-500 */
+    margin-bottom: 1rem; /* mb-4 */
+    line-height: 1.5;
+}
+
+.contributor-list-scrollable {
+    max-height: 240px; /* Adjust as needed */
+    overflow-y: auto;
+    padding-right: 0.5rem; /* space for scrollbar */
+    margin-right: -0.5rem; /* counteract padding */
+}
+
+/* Custom scrollbar for a cleaner look */
+.contributor-list-scrollable::-webkit-scrollbar {
+    width: 6px;
+}
+
+.contributor-list-scrollable::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.contributor-list-scrollable::-webkit-scrollbar-thumb {
+    background: #e2e8f0; /* slate-200 */
+    border-radius: 3px;
+}
+
+.contributor-list-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #cbd5e1; /* slate-300 */
+}

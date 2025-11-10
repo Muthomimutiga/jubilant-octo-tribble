@@ -1,0 +1,99 @@
+.widget-description {
+    font-size: 0.875rem; /* text-sm */
+    color: #64748b; /* slate-500 */
+    margin-bottom: 1rem; /* mb-4 */
+    line-height: 1.5;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+    justify-items: center;
+}
+
+.achievement-badge {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.achievement-badge:hover {
+    transform: scale(1.1);
+}
+
+.achievement-badge-progress-wrapper {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.achievement-progress-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg); /* Start progress from the top */
+}
+
+.progress-track, .progress-fill {
+    fill: none;
+}
+
+.progress-track {
+    stroke: #e2e8f0; /* slate-200 */
+}
+
+.progress-fill {
+    stroke: #94a3b8; /* slate-400 */
+    transition: stroke-dashoffset 0.5s ease-out;
+    stroke-linecap: round;
+}
+
+
+.badge-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+.badge-icon {
+    width: 28px;
+    height: 28px;
+    transition: color 0.3s ease;
+}
+
+.achievement-title {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b; /* slate-500 */
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+/* Locked state */
+.achievement-badge.locked .badge-icon {
+    color: #94a3b8; /* slate-400 */
+}
+
+/* Unlocked state */
+.achievement-badge.unlocked .progress-fill {
+    stroke: #f59e0b; /* amber-500 */
+}
+.achievement-badge.unlocked .badge-icon {
+    color: #b45309; /* amber-700 */
+}
+.achievement-badge.unlocked .achievement-title {
+    color: #334155; /* slate-700 */
+}

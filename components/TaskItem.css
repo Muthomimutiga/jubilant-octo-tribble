@@ -1,0 +1,207 @@
+/* Base styles for the task item card */
+.task-item {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0; /* slate-200 */
+    border-radius: 0.75rem; /* rounded-lg */
+    padding: 1rem 1.25rem; /* py-4 px-5 */
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* space-x-4 */
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    opacity: 0;
+    animation: rowFadeIn 0.4s ease-out forwards;
+    animation-delay: calc(0.05s * var(--row-index, 0));
+    position: relative; /* Needed for loader overlay */
+}
+
+.task-item:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+    border-color: #c7d2fe; /* indigo-200 */
+    transform: translateY(-2px);
+}
+
+.task-item:active {
+    transform: translateY(0) scale(0.99);
+}
+
+.task-item.is-dragging {
+    opacity: 0.5;
+    background: #eef2ff; /* indigo-50 */
+    border-style: dashed;
+}
+
+.task-item.is-updating {
+    cursor: wait;
+    background-color: #f8fafc; /* slate-50 */
+}
+
+/* Checkbox on the left */
+.task-item-checkbox-wrapper {
+    flex-shrink: 0;
+    width: 1.75rem; /* w-7 */
+    height: 1.75rem; /* h-7 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-item-checkbox-btn {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.375rem; /* rounded-md */
+    transition: transform 0.1s ease;
+}
+
+.task-item-checkbox-btn:active {
+    transform: scale(0.9);
+}
+
+.task-item-checkbox-btn svg {
+    width: 1.75rem; /* h-7 w-7 */
+    height: 1.75rem;
+    transition: all 0.2s ease;
+}
+.task-item-checkbox-btn:hover svg {
+    transform: scale(1.1);
+}
+.task-item-checkbox-btn:disabled svg {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Main task info */
+.task-item-main-info {
+    flex-grow: 1;
+    overflow: hidden; /* Prevents long text from breaking layout */
+}
+
+.task-item-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b; /* slate-800 */
+    transition: color 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.task-item-name.is-completed {
+    text-decoration: line-through;
+    color: #64748b; /* slate-500 */
+}
+
+.task-item-context {
+    font-size: 0.875rem;
+    color: #64748b; /* slate-500 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Meta info on the right */
+.task-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.task-item-assignee {
+    position: relative;
+    width: 2rem; /* w-8 */
+    height: 2rem; /* h-8 */
+    border-radius: 9999px; /* rounded-full */
+    background-color: #f1f5f9; /* slate-100 */
+    color: #475569; /* slate-600 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.assignee-initials {
+    line-height: 1;
+}
+
+.task-item-date {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #475569; /* slate-600 */
+    width: 90px;
+    text-align: right;
+}
+.task-item-date.is-overdue {
+    color: #dc2626; /* red-600 */
+    font-weight: 600;
+}
+
+/* Priority Badge */
+.task-priority-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    width: 80px;
+    text-align: center;
+}
+
+.priority-high { background-color: #fee2e2; color: #b91c1c; }
+.priority-medium { background-color: #fef3c7; color: #92400e; }
+.priority-low { background-color: #dbeafe; color: #1e40af; }
+.priority-unknown { display: none; }
+
+/* --- Styles for Board View --- */
+.task-item--board {
+    padding: 0.75rem 1rem;
+    padding-left: 1.25rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-item-priority-highlight {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    /* Use the text color from the priority classes for a solid bar */
+}
+.task-item-priority-highlight.priority-high { background-color: #b91c1c; }
+.task-item-priority-highlight.priority-medium { background-color: #92400e; }
+.task-item-priority-highlight.priority-low { background-color: #1e40af; }
+.task-item-priority-highlight.priority-unknown { background-color: #64748b; }
+
+.task-item--board.is-updating {
+    pointer-events: none;
+}
+
+.task-item-board-loader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(248, 250, 252, 0.7); /* slate-50 with opacity */
+    border-radius: 0.5rem;
+    z-index: 10;
+}
+
+
+@keyframes rowFadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

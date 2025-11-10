@@ -1,0 +1,80 @@
+
+.kanban-board {
+    /* Mobile-first: stacked columns */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* 24px */
+    width: 100%;
+}
+
+.kanban-column {
+    background-color: #f8fafc; /* slate-50 */
+    border-radius: 0.75rem; /* rounded-xl */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%;      /* Full width on mobile */
+    flex-shrink: 0;   /* Prevent shrinking in flex layouts */
+}
+
+/* Tablet & Desktop layout: horizontal, scrollable columns */
+@media (min-width: 768px) {
+    .kanban-board {
+        flex-direction: row;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        /* Add some padding to the bottom so the scrollbar doesn't look cramped */
+        padding-bottom: 1rem; 
+    }
+
+    .kanban-column {
+        width: 320px; /* Set a fixed width for columns on larger screens */
+    }
+}
+
+
+.kanban-column.is-drag-over {
+    background-color: #eef2ff; /* indigo-50 */
+}
+
+.kanban-column-title {
+    padding: 1rem 1.25rem;
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 700; /* font-bold */
+    color: #334155; /* slate-700 */
+    border-bottom: 1px solid #e2e8f0; /* slate-200 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.kanban-column-title-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.kanban-column-title .dot {
+    width: 0.625rem; /* 10px */
+    height: 0.625rem;
+    border-radius: 9999px;
+}
+.dot.todo { background-color: #64748b; } /* slate */
+.dot.inprogress { background-color: #3b82f6; } /* blue */
+.dot.done { background-color: #16a34a; } /* green */
+
+.kanban-column-count {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b; /* slate-500 */
+    background-color: #e2e8f0; /* slate-200 */
+    padding: 0.125rem 0.625rem; /* py-0.5 px-2.5 */
+    border-radius: 9999px;
+}
+
+.kanban-column-tasks {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* 12px */
+    flex-grow: 1;
+    min-height: 200px;
+}
